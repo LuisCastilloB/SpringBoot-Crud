@@ -1,17 +1,13 @@
 
 package co.spring.helloworld.web;
 
-import co.spring.helloworld.dao.PersonaDAO;
-import java.util.ArrayList;
-import java.util.List;
+import co.spring.helloworld.service.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import co.spring.helloworld.domain.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
 @Controller
@@ -22,7 +18,7 @@ public class ControladorIni {
     private String messageApp;
     
     @Autowired
-    private PersonaDAO personaDAO;
+    private PersonaService personaService;
     
 /*       
     @GetMapping("/hello")
@@ -38,10 +34,9 @@ public class ControladorIni {
         model.addAttribute("message", message);
         model.addAttribute("messageApp", messageApp);
         
-        var personas = personaDAO.findAll();
-        
+        var personas = personaService.listarPersonas();
         model.addAttribute("personas", personas);
-    
+        
         return "index";
     }
 }
