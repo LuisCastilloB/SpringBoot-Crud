@@ -1,6 +1,8 @@
 
 package co.spring.helloworld;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,13 +32,23 @@ public class ControladorIni {
         model.addAttribute("message", message);
         model.addAttribute("messageApp", messageApp);
         
+        List<Persona> personas = new ArrayList();
+        
         var persona = new Persona();
         persona.setNombre("Luis");
         persona.setApellido("Castillo");
         persona.setEmail("lacb@gmail.com");
         persona.setTelefono("13212");
         
-        model.addAttribute("persona",persona);
+         var persona2 = new Persona();
+        persona2.setNombre("Gindrid");
+        persona2.setApellido("Archila");
+        persona2.setEmail("gav@gmail.com");
+        persona2.setTelefono("54454");
+                
+      //  personas.add(persona);
+       // personas.add(persona2);
+        model.addAttribute("personas",personas);
         
         return "index";
     }
