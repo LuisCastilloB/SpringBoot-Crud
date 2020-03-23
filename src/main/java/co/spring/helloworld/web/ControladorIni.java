@@ -1,6 +1,7 @@
 
-package co.spring.helloworld;
+package co.spring.helloworld.web;
 
+import co.spring.helloworld.dao.PersonaDAO;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import co.spring.helloworld.domain.Persona;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
@@ -17,6 +20,9 @@ public class ControladorIni {
     
     @Value("${index.messageApp}")
     private String messageApp;
+    
+    @Autowired
+    private PersonaDAO personaDAO;
     
 /*       
     @GetMapping("/hello")
@@ -32,24 +38,10 @@ public class ControladorIni {
         model.addAttribute("message", message);
         model.addAttribute("messageApp", messageApp);
         
-        List<Persona> personas = new ArrayList();
+        var personas = personaDAO.findAll();
         
-        var persona = new Persona();
-        persona.setNombre("Luis");
-        persona.setApellido("Castillo");
-        persona.setEmail("lacb@gmail.com");
-        persona.setTelefono("13212");
-        
-         var persona2 = new Persona();
-        persona2.setNombre("Gindrid");
-        persona2.setApellido("Archila");
-        persona2.setEmail("gav@gmail.com");
-        persona2.setTelefono("54454");
-                
-      //  personas.add(persona);
-       // personas.add(persona2);
-        model.addAttribute("personas",personas);
-        
+        model.addAttribute("personas", personas);
+    
         return "index";
     }
 }
