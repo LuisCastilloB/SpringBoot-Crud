@@ -59,4 +59,10 @@ public class ControladorIni {
         model.addAttribute(persona);
         return "/modificar";
     }
+    
+    @GetMapping("/eliminar")
+    public String eliminar(Persona persona) {
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
 }
