@@ -52,4 +52,11 @@ public class ControladorIni {
        personaService.guardar(persona);  
        return "redirect:/";
     }
+    
+    @GetMapping("/editar/{id}")
+    public String editar(Persona persona, Model model) {
+        persona = personaService.buscarPersona(persona);
+        model.addAttribute(persona);
+        return "/modificar";
+    }
 }

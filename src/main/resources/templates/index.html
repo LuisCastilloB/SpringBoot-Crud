@@ -18,11 +18,15 @@
                     <td>Nombre:</td>
                     <td>Apellido</td>
                     <td>Email</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
                 </tr>
                 <tr th:each="persona : ${personas}">
                     <td th:text="${persona.nombre}"></td>
                     <td th:text="${persona.apellido}"></td>
                     <td th:text="${persona.email}"></td>
+                    <td><a th:href="@{/editar/}+${persona.id}">Editar</a></td>
+                    <td><a th:href="@{/eliminar/}+${persona.id}">Eliminar</a></td>
                 </tr>
 
             </table>
