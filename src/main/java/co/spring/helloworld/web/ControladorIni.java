@@ -1,6 +1,7 @@
 
 package co.spring.helloworld.web;
 
+import co.spring.helloworld.domain.Persona;
 import co.spring.helloworld.service.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 
 //@RestController
 @Controller
@@ -38,5 +40,16 @@ public class ControladorIni {
         model.addAttribute("personas", personas);
         
         return "index";
+    }
+    
+    @GetMapping("/agregar")
+    public String agregar(Persona persona) {
+        return "modificar";
+    }
+    
+    @PostMapping("/guardar") 
+    public String guardar(Persona persona) {
+       personaService.guardar(persona);  
+       return "redirect:/";
     }
 }

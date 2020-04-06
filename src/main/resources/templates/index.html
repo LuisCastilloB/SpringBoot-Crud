@@ -11,10 +11,7 @@
            
         </div>
         <hr>
-        <!--        Nombre: <span th:text="${persona.nombre}">Nombre</span><br>
-                Apellido <span th:text="${persona.apellido}">Apellido</span><br>
-                Email <span th:text="${persona.email}">Email</span><br>
-                Telefono <span th:text="${persona.telefono}">Telefono</span><br>-->
+        <a th:href="@{/agregar}">Create Person</a>
         <div th:if="${personas != null and !personas.empty}">
             <table border="1">
                 <tr>
